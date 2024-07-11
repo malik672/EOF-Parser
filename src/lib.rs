@@ -1,3 +1,16 @@
+//! # EOF Parser
+
+#![warn(
+    missing_debug_implementations,
+    unreachable_pub,
+    clippy::missing_const_for_fn,
+    rustdoc::all
+)]
+#![cfg_attr(not(test), warn(unused_crate_dependencies))]
+#![deny(unused_must_use, rust_2018_idioms)]
+#![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
+
+
 pub mod error;
 pub mod parser;
 pub mod constants;
@@ -9,7 +22,7 @@ pub struct EOFContainer {
  pub body: Body,
 }
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone, Copy)]
 pub struct EOFHeader {
   pub magic: [u8; 2],
   pub version: u8,

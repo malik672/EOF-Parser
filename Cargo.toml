@@ -2,7 +2,13 @@
 name = "EOF-Parser"
 version = "0.1.0"
 edition = "2021"
+authors = ["malik <aremumalik05@gmail.com>"]
+description = "EOF Parser is a Rust library for parsing Ethereum Object Format (EOF) files"
+license = "MIT"
 
 [dependencies]
 byteorder = "1.5.0"
 thiserror = "1.0.61"
+
+[lib]
+doctest = true

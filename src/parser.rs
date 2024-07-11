@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-
+#[derive(Debug, PartialEq, Clone)]
 pub struct Parser<R: Read> {
     reader: R,
 }
