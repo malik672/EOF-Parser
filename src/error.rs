@@ -1,6 +1,5 @@
-
-pub use thiserror::Error;
 use std::io;
+pub use thiserror::Error;
 
 #[derive(Debug, Error)]
 pub enum Error {

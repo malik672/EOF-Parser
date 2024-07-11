@@ -5,7 +5,7 @@ pub struct Parser<R: Read> {
     reader: R,
 }
 
-impl <R: Read> Parser<R> {
+impl<R: Read> Parser<R> {
     pub fn new(reader: R) -> Self {
         Parser { reader }
     }
@@ -14,9 +14,8 @@ impl <R: Read> Parser<R> {
         let header = self.parse_header()?;
         let body = self.parse_body(&header)?;
 
-         Ok(EOFContainer { header, body })
+        Ok(EOFContainer { header, body })
     }
-
 
     fn parse_header(&mut self) -> Result<EOFHeader, Error> {
         let mut magic = [0u8; 2];
@@ -34,7 +33,7 @@ impl <R: Read> Parser<R> {
         let type_size = self.reader.read_u16::<LittleEndian>()?;
         let kind_code = self.reader.read_u8()?;
         let num_code_sections = self.reader.read_u16::<LittleEndian>()?;
-        
+
         if num_code_sections == 0 || num_code_sections as usize > MAX_CODE_SECTIONS {
             return Err(Error::InvalidCodeSectionCount);
         }
@@ -115,8 +114,6 @@ impl <R: Read> Parser<R> {
         self.reader.read_exact(&mut buffer)?;
         Ok(buffer)
     }
-
-
 }
 
 #[cfg(test)]
@@ -141,8 +138,7 @@ mod tests {
             0x00, 0x00, // data_size
             0x00, // terminator
             // Types section
-            0x00, 0x01, 0x02, 0x00,
-            // Code section
+            0x00, 0x01, 0x02, 0x00, // Code section
             0x60, 0x00, 0x60, 0x00, 0x60, 0x00, 0x60, 0x00, 0x60, 0x00,
         ];
 
