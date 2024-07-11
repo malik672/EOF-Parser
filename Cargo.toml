@@ -12,3 +12,9 @@ thiserror = "1.0.61"
 
 [lib]
 doctest = true
+
+[lints]
+rust.missing_debug_implementations = "warn"
+rust.missing_docs = "warn"
+rust.unreachable_pub = "warn"
+rustdoc.all = "warn"
